@@ -1,0 +1,52 @@
+++++
+<img src="http://nagrestconf.smorg.co.uk/images/ext/check_slabsize.png"
+alt="Nagios GUI Screenshot" style="float:none" />
+++++
+
+Check Nagios Config
+-------------------
+
+Check the size of Slab memory does not exceed percentage of total memory.
+
+*INSTALL*
+
+Example:
+
+----
+wget https://raw.github.com/mclarkson/check_slabsize/master/check_slabsize
+chmod +x check_slabsize
+mv check_slabsize /usr/lib64/nagios/plugins/
+----
+
+*EXAMPLE OUTPUT*
+
+----
+OK: Slab at 2% of total RAM.
+
+WARNING: Slab at 73% of total RAM. | 'Slab %'=73%;50;90;;
+----
+
+*MANUAL PAGE*
+
+----
+$ ./check_slabsize -h
+
+check_slabsize - Alert if Slab usage is high.
+
+Usage: check_slabsize [options]
+
+ -p      :  Add performance data output for graphing.
+ -w NUM  :  Warning alert if Slab memory exceeds NUM % of RAM.
+            Default is 50.
+ -c NUM  :  Critical alert if Slab memory exceeds NUM % of RAM.
+            Default is 90.
+ -h      :  Display this help text.
+
+Example:
+
+  Check that Slab does not exceed 50% or 90% of RAM
+
+    ./check_slabsize
+
+----
+
